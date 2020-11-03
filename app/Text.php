@@ -16,6 +16,8 @@ class Text extends Model
         'screen_uuid',
         'button_sub_screen_uuid',   // belongs to a button click
         'screen_id',
+        'width',
+        'height',
         'purpose',
         'content',
     ];
@@ -35,10 +37,5 @@ class Text extends Model
     {
         return $this->belongsTo('Manticore\ButtonSubscreen', 'button_sub_screen_uuid', 'uuid');
     }
-
-
-
-
-
 
 }

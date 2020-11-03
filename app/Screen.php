@@ -61,6 +61,18 @@ class Screen extends Model
         return $this->hasMany('Manticore\Style', 'screen_uuid', 'uuid');
     }
 
+
+    public function button_styles()
+    {
+        return $this->hasMany('Manticore\ButtonStyle', 'screen_uuid', 'uuid');
+    }
+
+    public function text_styles()
+    {
+        return $this->hasMany('Manticore\TextStyle', 'screen_uuid', 'uuid');
+    }
+
+
     public function constraints()
     {
         return $this->hasMany('Manticore\Constraint', 'screen_uuid', 'uuid');

@@ -17,6 +17,8 @@ class Button extends Model
         'button_sub_screen_uuid',   // belongs to a button click/subscreen
         'with_sub_screen',
         'sub_screen_uuid',          // subscreen clicking this button goes to
+        'width',
+        'height',
         'label',
         'purpose',
         'content',

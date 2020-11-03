@@ -94,13 +94,13 @@ Route::post('/dashboard/{username}/new-app', [
 
 Route::get('/dashboard/{username}/{app_name}', [
     'uses' => '\Manticore\Http\Controllers\DashboardController@getEditApp',
-    'as' => 'dashboard.edit_app',
+    'as' => 'dashboard.edit_app_alpha',
     'middleware' => ['auth'],
 ]);
 
 Route::post('/dashboard/{username}/{app_name}', [
     'uses' => '\Manticore\Http\Controllers\DashboardController@postEditApp',
-    'as' => 'dashboard.edit_app',
+    'as' => 'dashboard.edit_app_alpha',
     'middleware' => ['auth'],
 ]);
 
@@ -108,7 +108,7 @@ Route::post('/dashboard/{username}/{app_name}', [
 // Edit Screen
 
 
-Route::get('/dashboard/{username}/{app_name}/{screen_name}/{screen_uuid}', [
+/*Route::get('/dashboard/{username}/{app_name}/{screen_name}/{screen_uuid}', [
     'uses' => '\Manticore\Http\Controllers\DashboardController@getEditScreen',
     'as' => 'dashboard.edit_screen',
     'middleware' => ['auth'],
@@ -119,14 +119,31 @@ Route::post('/dashboard/{username}/{app_name}/{screen_name}/{screen_uuid}', [
     'uses' => '\Manticore\Http\Controllers\DashboardController@postEditScreen',
     'as' => 'dashboard.edit_screen',
     'middleware' => ['auth'],
+]);*/
+
+/**
+ * new for alpha:
+ */
+
+Route::get('/dashboard/{username}/{app_name}/{screen_name}/{screen_uuid}', [
+    'uses' => '\Manticore\Http\Controllers\ScreenControllerAlpha@getEditScreen',
+    'as' => 'dashboard.edit_screen_alpha',
+    'middleware' => ['auth'],
 ]);
 
+/*Route::post('/dashboard/{username}/{app_name}/{screen_name}/{screen_uuid}', [
+    'uses' => '\Manticore\Http\Controllers\ScreenControllerAlpha@postEditScreen',
+    'as' => 'dashboard.edit_screen_alpha',
+    'middleware' => ['auth'],
+]);*/
+
+
 // Delete element from screen
-Route::delete('/dashboard/{username}/{app_name}/{screen_name}/{screen_uuid}', [
+/*Route::delete('/dashboard/{username}/{app_name}/{screen_name}/{screen_uuid}', [
     'uses' => '\Manticore\Http\Controllers\DashboardController@destroyElement',
     'as' => 'dashboard.edit_screen',
     'middleware' => ['auth'],
-]);
+]);*/
 
 
 // Edit Button Sub Screen
@@ -290,3 +307,79 @@ Route::get('/search', [
     'as' => 'search.results',
     'middleware' => ['auth'],
 ]);
+
+/**
+ *
+ *  Routes for new alpha stuff
+ *
+ */
+
+
+/*Route::get('/dashboard/{username}/{app_name}/{screen_name}/{screen_uuid}', [
+    'uses' => '\Manticore\Http\Controllers\ScreenControllerAlpha@getEditScreen',
+    'as' => 'dashboard.edit_screen_alpha',
+    'middleware' => ['auth'],
+]);
+
+Route::post('/dashboard/{username}/{app_name}/{screen_name}/{screen_uuid}', [
+    'uses' => '\Manticore\Http\Controllers\ScreenControllerAlpha@postEditScreen',
+    'as' => 'dashboard.edit_screen_alpha',
+    'middleware' => ['auth'],
+]);*/
+
+
+/**
+ *
+ *      UPDATE routes
+ *
+ */
+
+Route::post('/{screen_uuid}/update_screen', 'ScreenControllerAlpha@update_screen');
+Route::post('/{screen_uuid}/update_text_styles', 'ScreenControllerAlpha@update_text_styles');
+Route::post('/{screen_uuid}/update_button_styles', 'ScreenControllerAlpha@update_button_styles');
+Route::post('/{screen_uuid}/update_element_contents', 'ScreenControllerAlpha@update_element_contents');
+// https://stackoverflow.com/questions/20302776/how-to-get-route-parameter-in-javascript?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+
+
+/**
+ *
+ *      CREATE routes
+ *
+ * */
+
+Route::post('/{screen_uuid}/create_text', 'ScreenControllerAlpha@create_text');
+Route::post('/{screen_uuid}/create_image', 'ScreenControllerAlpha@create_image');
+Route::post('/{screen_uuid}/create_button', 'ScreenControllerAlpha@create_button');
+
+Route::post('/{screen_uuid}/upload_image', 'ScreenControllerAlpha@upload_image');
+
+/**
+ *
+ *      DELETE routes
+ *
+ */
+
+Route::post('/{screen_uuid}/delete_text', 'ScreenControllerAlpha@delete_text');
+Route::post('/{screen_uuid}/delete_image', 'ScreenControllerAlpha@delete_image');
+Route::post('/{screen_uuid}/delete_button', 'ScreenControllerAlpha@delete_button');
+
+
+/**
+ *
+ *   READ routes
+ *
+ */
+
+// Sample routes to go beyond demo testing
+
+/*NOT todo: INTEGRATED INTO MANTICORE! (Yet) -> Waiting for the OAUTH migration*/
+
+Route::get('styles_by_screen', 'SyncController@styles_by_screen');
+Route::get('constraints_by_screen', 'SyncController@constraints_by_screen');
+
+Route::get('/{screen_uuid}/get_saas_interface_objects', 'SyncController@get_saas_interface_objects');
+
+Route::get('/{screen_uuid}/gallery_images', 'SyncController@get_gallery_images');
+
+
+

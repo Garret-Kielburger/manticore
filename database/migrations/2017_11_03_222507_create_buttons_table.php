@@ -19,6 +19,8 @@ class CreateButtonsTable extends Migration
             $table->uuid('button_sub_screen_uuid')->nullable();
             $table->boolean('with_sub_screen');
             $table->uuid('sub_screen_uuid')->nullable();
+            $table->smallInteger('width');
+            $table->smallInteger('height');
             $table->string('label');
             $table->string('purpose');
             $table->string('content');

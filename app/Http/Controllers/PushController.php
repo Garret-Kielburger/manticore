@@ -46,7 +46,9 @@ class PushController extends Controller
             $deviceId = $request['deviceId'];
             $regId = $request['regId'];
 
-            $existingUser = GcmUser::where('deviceId', $deviceId)->first();
+
+            //todo: make this include check for app_uuid - can have more than one app per device!
+            $existingUser = GcmUser::where('deviceId', $deviceId)->where('app_uuid', $app_uuid)->first();
 
             if ($existingUser){
                 $existingUser->regId = $regId;
@@ -90,6 +92,7 @@ class PushController extends Controller
     private function storeUser($deviceId, $regId, $app_uuid)
     {
         //todo: prevent duplicate entries by updating deviceId if it exists
+        //todo: all deviceID to have more than one app, too!
         //add user to database
         $userData = [
             'deviceId'=> $deviceId,
@@ -98,5 +101,5 @@ class PushController extends Controller
         ];
         GcmUser::create($userData);
     }
-//todo: add function for unRegister()
+//todo: add function for unRegister()?
 }

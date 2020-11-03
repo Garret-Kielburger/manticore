@@ -7,6 +7,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
 use Manticore\Constraint;
 use Manticore\Jobs\AddScreen;
 use Manticore\Jobs\PushMessage;
@@ -26,6 +27,7 @@ use Manticore\Button;
 use Manticore\ButtonSubscreen;
 use Manticore\GcmUser;
 use Manticore\Style;
+
 
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -162,7 +164,7 @@ class DashboardController extends Controller
         $navStyle = NavigationStyle::where('app_uuid', $app->uuid)->first();
 
 
-        return view('dashboard.edit_app')
+        return view('dashboard.edit_app_alpha')
             ->with('user', $user)
             ->with('apps', $apps)
             ->with('app', $app)
@@ -249,7 +251,7 @@ class DashboardController extends Controller
 
                 $GcmUsers = GcmUser::where('app_uuid', $app->uuid)->get();
 
-                $app = App::where('uuid', $app->uuid)->first();
+                //$app = App::where('uuid', $app->uuid)->first();
 
 
                 /**
@@ -301,6 +303,7 @@ class DashboardController extends Controller
 
             case "push_sync":
 
+                // todo: causes error when changing app name! On new app
 
                 $GcmUsers = GcmUser::where('app_uuid', $app->uuid)->get();
                 $app = App::where('uuid', $app->uuid)->first();
@@ -368,7 +371,7 @@ class DashboardController extends Controller
             default:
                 $screens = Screen::where('app_uuid', $app->uuid)->get()->sortBy('screen_order_number');
 
-                return view('dashboard.edit_app')
+                return view('dashboard.edit_app_alpha')
                     ->with('user', $user)
                     ->with('apps', $apps)
                     ->with('app', $app)
@@ -381,7 +384,7 @@ class DashboardController extends Controller
         $navStyle = NavigationStyle::where('app_uuid', $app->uuid)->first();
 
 
-        return view('dashboard.edit_app')
+        return view('dashboard.edit_app_alpha')
             ->with('user', $user)
             ->with('apps', $apps)
             ->with('app', $app)

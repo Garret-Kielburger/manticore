@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTextsTable extends Migration
+class CreateButtonStylesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,20 +12,19 @@ class CreateTextsTable extends Migration
      */
     public function up()
     {
-        Schema::create('texts', function(Blueprint $table){
+        Schema::create('button_styles', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid')->unique();
-            $table->integer('screen_id');
             $table->uuid('screen_uuid');
             $table->uuid('button_sub_screen_uuid')->nullable();
-            $table->smallInteger('width');
-            $table->smallInteger('height');
-            $table->string('purpose')->nullable();
-            $table->integer('vertical_align')->nullable();
-            $table->integer('horizontal_align')->nullable();
-            $table->string('content');
-            $table->timestamps();
+            $table->uuid('view_object_uuid');
+            $table->string('text_size')->nullable();
+            $table->string('text_color')->nullable();
+            $table->string('text_style')->nullable();
+            $table->string('font_family')->nullable();
+            $table->string('background_color')->nullable();
 
+            $table->timestamps();
         });
     }
 
@@ -37,7 +36,7 @@ class CreateTextsTable extends Migration
     public function down()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        Schema::drop('texts');
+        Schema::dropIfExists('button_styles');
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 
     }
