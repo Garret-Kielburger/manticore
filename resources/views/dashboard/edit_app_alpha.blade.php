@@ -27,7 +27,6 @@
             </div>
             <div class="form-group">
                 {!! Form::label('app_api_key', 'App api-key for push messaging') !!}
-                {{--todo: do null check and make the api key the normal thing? Needed? This'll never be seen, mostly--}}
                 {!! Form::text('app_api_key', null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">

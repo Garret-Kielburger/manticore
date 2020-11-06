@@ -92,7 +92,7 @@ class PushController extends Controller
     private function storeUser($deviceId, $regId, $app_uuid)
     {
         //todo: prevent duplicate entries by updating deviceId if it exists
-        //todo: all deviceID to have more than one app, too!
+        //todo: all deviceID could have more than one app, too!
         //add user to database
         $userData = [
             'deviceId'=> $deviceId,
@@ -101,5 +101,4 @@ class PushController extends Controller
         ];
         GcmUser::create($userData);
     }
-//todo: add function for unRegister()?
 }

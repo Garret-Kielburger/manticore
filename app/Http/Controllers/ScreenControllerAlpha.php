@@ -248,7 +248,7 @@ class ScreenControllerAlpha extends Controller
         $gal_img = GalleryImage::where('app_uuid',$screen->app_uuid)->firstOrFail();
         $sample_uri = $gal_img->uri;
 
-        //todo: change for when uuid is auto-gen
+        //todo: change for when uuid is auto-generated
 
         $imgs = Image::where('screen_uuid', $screen_uuid)->get();
         $i = count($imgs) + 11;

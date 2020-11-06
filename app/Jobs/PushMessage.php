@@ -79,7 +79,7 @@ class PushMessage extends Job implements ShouldQueue
 
         $allToSend = PushNotification::DeviceCollection($ppl);
 
-        $one = "dvmWw739NFY:APA91bF48kMQOMTXX0Vbpj06HlLQOAgTOG5aiVxlWYgfrD5VMITP1BiGl2mLsXsLhygQrdZVMhchmO14owv3CVdmhYyLEbd5Em7W7UDluseuysEsSp64-3VSM_xU3pfWbiL3NRTTYfVE";
+        $one = "";
 
         // push sync to use dynamic app api-key --> use app_uuid to get it in constructor
 

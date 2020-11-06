@@ -66,9 +66,9 @@ class PushSync extends Job implements ShouldQueue
 
         /*
         // This is the code for sending messages to single device with manually set regId
-        $regId = 'APA91bEBND4nTDT7wAsDwNGvFrouV6uYRD73tdkoVn-rP5fL94RDJWDxHENHLhq4PgWJfWvA6ClbF4DPd-5Uyx1lf6PVHVVfoPuGRLVdrjMbS5nhkqz9dAnKmWba4YqgJDU80XDpZDcX';
+        $regId = '';
         PushNotification::app(['environment' => 'production',
-            'apiKey' => 'AIzaSyDCWjG0Srb7XFZ8bjGb4_BicVCQdMORLe0',
+            'apiKey' => '',
             'service' => 'gcm'])->to($regId)->send($message, ['collapse_key'=>'collapse']);*/
 
     }

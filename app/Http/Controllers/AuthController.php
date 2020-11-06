@@ -46,7 +46,7 @@ class AuthController extends Controller
         if (!Auth::attempt($request->only(['email', 'password']), $request->has('remember'))) {
             return redirect()->back()->with('info', 'Your credentials do not match our records. Please try again or sign up.');
         }
-        //todo: return to user's dashboard
+        //return to user's dashboard
         return redirect()->route('home')
             ->with('info', "You are now signed in.");
     }

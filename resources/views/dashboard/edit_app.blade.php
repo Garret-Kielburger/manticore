@@ -27,7 +27,6 @@
             </div>
             <div class="form-group">
                 {!! Form::label('app_api_key', 'App api-key for push messaging') !!}
-                {{--todo: do null check and make the api key the normal thing? Needed? This'll never be seen, mostly--}}
                 {!! Form::text('app_api_key', null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
@@ -378,18 +377,6 @@
             </tbody>
             </table>
         </div>
-            {{--<form method="POST" action="{{ route('dashboard.edit_app', [Auth::user()->username, $app_name ]) }}" accept-charset="UTF-8">
-                <input name="_token" type="hidden" value="{{ Session::token() }}">
-                <input name="type" type="hidden" value="update_navigation_styles">
-                <div class="form-group">
-                    {!! Form::label('navigation_control_colour', "Navigation Control Colour:") !!}
-                    <input class="form-control" name="navigation_control_colour" type="color">
-                </div>
-                <div class="form-group">
-                    {!! Form::submit('Update Navigation Control Colour', ['class' => 'btn btn-primary']) !!}
-                    --}}{{--<button type="submit" class="btn btn-primary">Sign up</button>--}}{{--
-                </div>
-            </form>--}}
         </div>
     </div>
 

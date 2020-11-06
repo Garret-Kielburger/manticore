@@ -144,9 +144,6 @@ class DashboardController extends Controller
      */
     // EDIT APP
 
-    // todo: fix form pre-population for existing App details
-    // todo: remove foreign key so can delete screen with text/images without error
-
     public function getEditApp($username, $app_name)
     {
         $user = Auth::user();
@@ -324,7 +321,7 @@ class DashboardController extends Controller
                     ->getFeedback();
 
 
-                // todo: get queues working and use uncomment the following dispatch call
+                // todo: use queues working and use uncomment the following dispatch call
                 //$this->dispatch(new PushSync($app->uuid));
                 break;
 
@@ -453,7 +450,7 @@ class DashboardController extends Controller
         $styleValueList = FontStyleValue::where('property_type', 'style')->pluck('value_to_apply', 'id');
 
 
-        //This shit is causing problems for some reason. Unknown - the code works elsewhere. See Test method
+        //This is causing problems for some reason. Unknown - the code works elsewhere. See Test method
         foreach ($styles as $style){
             if ($style->property_to_style == 3 || $style->property_to_style == 4) {
                 //dd($style->property_to_style);
@@ -801,7 +798,7 @@ class DashboardController extends Controller
 
                     /*
                      * Cases to sanitize for:
-                     *a
+                     *
                      * If property_to_style is font or style, it needs to make sure tht the values it updates
                      * value_to_style to is one for font or style respectively
                      *
@@ -832,9 +829,6 @@ class DashboardController extends Controller
                             $styleUpdate->save();
                         }
                     }
-
-                    // Needed for testing at some point?
-                    // (FontStyleValue::where('value_to_apply', $request->value_to_apply)->first()->property_type == "font"))
 
                     // Text family font
                     elseif ($request->property_to_style == 4) {
@@ -1193,8 +1187,6 @@ class DashboardController extends Controller
                 $styleUpdate = Style::where('uuid', $request->uuid)->first();
                 if ($styleUpdate) {
 
-                    //todo:
-
                     // will need logic to blank out value_to_apply when property_to_style is changed I think
                     $styleUpdate->view_object_uuid = $request->view_object_uuid;
                     // todo: update to string values
@@ -1221,7 +1213,7 @@ class DashboardController extends Controller
 
                     /*
                      * Cases to sanitize for:
-                     *a
+                     *
                      * If property_to_style is font or style, it needs to make sure tht the values it updates
                      * value_to_style to is one for font or style respectively
                      *
